@@ -1,10 +1,6 @@
 <?php
 /*
 ** Name : Get Data From NID
-** Author : Saiedoz
-** Fb.com/notsaied
-** linkedin.com/in/notsaied
-** t.me/notsaied
 */
 
 function nid_to_data($nID){
