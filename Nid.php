@@ -25,6 +25,20 @@ function nid_to_data($nID){
 
     if(strlen($nID) === 14):
 
+        $gender_number = substr($nID, 12,1);
+
+        if(in_array($gender_number,[1,3,5,7,9]))
+        {
+            $gender = 'ذكر';
+        }
+        elseif( in_array($gender_number,[2,4,6,8]) )
+        {
+            $gender = 'إنثي';
+        }
+        else {
+            $gender = 'غير معروف';
+        }
+
         $t = substr($nID,0,1); //century
 
         $yy = substr($nID,1,2); //year
@@ -39,9 +53,11 @@ function nid_to_data($nID){
 
         $result = [
 
-        'birthday'=>$year.'/'.$mm.'/'.$dd,
+        'birthday'=>$year.'-'.$mm.'-'.$dd,
 
-        'governorate' => (isset($gov[$cc])) ? $gov[$cc] : 'غير معروف'
+        'governorate' => (isset($gov[$cc])) ? $gov[$cc] : 'غير معروف',
+
+        'Gender' => $gender,
 
         ];
 
@@ -59,3 +75,4 @@ function nid_to_data($nID){
     return json_encode($result);
 
 }
+
